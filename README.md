@@ -1,4 +1,11 @@
-# Tauri + Vue 3 + TypeScript
+# July Writer
+
+Minimal rich text editor built with Tauri and Vue, powered by Tiptap
+
+    🚧 Work in progress
+
+<img width="1512" alt="CleanShot 2023-01-07 at 18 18 46@2x" src="https://user-images.githubusercontent.com/46557266/211162736-202b3f29-29c7-4d34-b5b8-f6778c529fa1.png">
+
 
 This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
