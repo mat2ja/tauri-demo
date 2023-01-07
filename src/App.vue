@@ -1,45 +1,63 @@
 <script lang="ts" setup>
-const name = $ref('')
+const { pickRandomTheme } = useTheme()
 
-const greeting = computed(() => `Hello ${name}`)
-const { mode, toggleTheme } = useTheme()
+onMounted(() => {
+  pickRandomTheme()
+})
 
-const content = ref('<p>A Vue.js wrapper component for tiptap to use <code>v-model</code>.</p>')
+const content = ref(`
+        <h2>
+          Hi there,
+        </h2>
+        <p>
+          this is a <em>basic</em> example of <strong>tiptap</strong>. Sure, there are all kind of basic text styles you’d probably expect from a text editor. But wait until you see the lists:
+        </p>
+        <ul>
+          <li>
+            That’s a bullet list with one …
+          </li>
+          <li>
+            … or two list items.
+          </li>
+        </ul>
+        <p>
+          Isn’t that great? And all of that is editable. But wait, there’s more. Let’s try a code block:
+        </p>
+        <pre><code class="language-css">body {
+  display: none;
+}</code></pre>
+        <p>
+          I know, I know, this is impressive. It’s only the tip of the iceberg though. Give it a try and click a little bit around. Don’t forget to check the other examples too.
+        </p>
+        <blockquote>
+          Wow, that’s amazing. Good work, boy! 👏
+          <br />
+          — Mom
+        </blockquote>
+      `,
+)
+
+useGlobalShortcuts()
 </script>
 
 <template>
-  <div class="w-full mx-auto max-w-5xl p-8">
+  <div class="w-full mx-auto max-w-4xl p-8 pb-60">
     <div class="space-y-8">
-      <div class="flex justify-end">
-        <button class="btn" @click="toggleTheme">
-          <Icon :name="mode === 'dark' ? 'ic:round-wb-sunny' : 'ic:round-dark-mode'" />
-        </button>
+      <TheHeader />
+
+      <div class="">
+        <Tiptap $="content" class="w-full" />
       </div>
-
-      <div class="flex flex-col gap-2">
-        <Input $="name" placeholder="Your name" aria-label="Name" />
-      </div>
-
-      <div class="prose">
-        <h1>
-          {{ name ? greeting : 'Hi there!' }}
-        </h1>
-        <blockquote>
-          Someone at some time said something.
-        </blockquote>
-      </div>
-
-      <textarea v-model="content" cols="30" rows="10" class="textarea textarea-bordered" />
-
-      <tiptap $="content" />
     </div>
   </div>
 </template>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1&display=swap');
-
+<style lang="postcss">
 body {
   min-height: 100vh;
+  caret-shape: block;
+}
+
+::selection {
 }
 </style>

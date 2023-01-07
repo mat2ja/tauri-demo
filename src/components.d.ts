@@ -11,6 +11,7 @@ declare module '@vue/runtime-core' {
     Icon: typeof import('./components/Icon.vue')['default']
     Input: typeof import('./components/Input.vue')['default']
     MyInput: typeof import./components/Input.vueue')['default']
+    TheHeader: typeof import('./components/TheHeader.vue')['default']
     Tiptap: typeof import('./components/Tiptap.vue')['default']
   }
 }

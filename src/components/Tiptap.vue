@@ -2,24 +2,37 @@
 import { EditorContent, useEditor } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
 
-const { modelValue: content } = defineModel<{
+const props = defineProps<{
   modelValue: string
 }>()
+
+const emit = defineEmits<{
+  (e: 'update:modelValue', value?: string): void
+}>()
+
+const content = useVModel(props, 'modelValue', emit)
 
 const editor = useEditor({
   content: content.value,
   extensions: [
     StarterKit,
   ],
+  autofocus: true,
+  editorProps: {
+    attributes: {
+      class: 'prose prose-xl font-mono w-full focus:outline-none',
+    },
+  },
+  onUpdate: () => {
+    emit('update:modelValue', editor.value?.getHTML())
+  },
 })
 
 watch(content, (val) => {
   const isSame = editor.value?.getHTML() === val
   if (isSame) return
 
-  if (val) {
-    editor.value?.commands.setContent(val, false)
-  }
+  editor.value?.commands.setContent(val, false)
 })
 </script>
 
