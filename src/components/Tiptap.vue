@@ -20,7 +20,7 @@ const editor = useEditor({
   autofocus: true,
   editorProps: {
     attributes: {
-      class: 'prose prose-xl font-mono w-full focus:outline-none',
+      class: 'prose prose-lg font-mono w-full focus:outline-none',
     },
   },
   onUpdate: () => {

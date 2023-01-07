@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-const { mode, themes, toggleTheme, pickRandomTheme } = useTheme()
+const { mode, themes, pickRandomTheme } = useTheme()
 </script>
 
 <template>
-  <div class="flex justify-end">
+  <div class="flex justify-end px-8 pr-10">
     <div class="form-control">
       <div class="flex items-center gap-2">
         <select v-model="mode" class="select select-sm select-ghost w-full max-w-xs">
