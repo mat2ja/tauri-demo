@@ -11,11 +11,13 @@ export const useTheme = () => {
   const isLight = computed(() => mode.value === 'light')
 
   const toggleTheme = () => {
-    if (isDark.value)
+    if (isDark.value) {
       mode.value = 'light'
+    }
 
-    else
+    else {
       mode.value = 'dark'
+    }
   }
 
   return {

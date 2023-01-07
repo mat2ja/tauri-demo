@@ -1,6 +1,8 @@
 {
   "extends": "@antfu",
   "rules": {
-    "no-console": "warn"
+    "no-console": "warn",
+    "curly": ["error", "multi-line"],
+    "antfu/if-newline": "off"
   }
 }

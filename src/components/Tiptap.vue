@@ -2,11 +2,24 @@
 import { EditorContent, useEditor } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
 
+const { modelValue: content } = defineModel<{
+  modelValue: string
+}>()
+
 const editor = useEditor({
-  content: '<p>I’m running Tiptap with Vue.js. 🎉</p>',
+  content: content.value,
   extensions: [
     StarterKit,
   ],
+})
+
+watch(content, (val) => {
+  const isSame = editor.value?.getHTML() === val
+  if (isSame) return
+
+  if (val) {
+    editor.value?.commands.setContent(val, false)
+  }
 })
 </script>
 

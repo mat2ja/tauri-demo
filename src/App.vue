@@ -3,6 +3,8 @@ const name = $ref('')
 
 const greeting = computed(() => `Hello ${name}`)
 const { mode, toggleTheme } = useTheme()
+
+const content = ref('<p>A Vue.js wrapper component for tiptap to use <code>v-model</code>.</p>')
 </script>
 
 <template>
@@ -27,7 +29,9 @@ const { mode, toggleTheme } = useTheme()
         </blockquote>
       </div>
 
-      <tiptap />
+      <textarea v-model="content" cols="30" rows="10" class="textarea textarea-bordered" />
+
+      <tiptap $="content" />
     </div>
   </div>
 </template>
